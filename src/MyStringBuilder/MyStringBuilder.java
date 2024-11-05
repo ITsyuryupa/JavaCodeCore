@@ -1,12 +1,13 @@
-import java.lang.reflect.Array;
+package MyStringBuilder;
+
 import java.util.Arrays;
 
 public class MyStringBuilder implements Comparable<MyStringBuilder>{
 
-    char[] value;
+    private char[] value;
 
     //кол-во символов в строке
-    int count;
+    private int count;
 
     public MyStringBuilder() {
         this(16);

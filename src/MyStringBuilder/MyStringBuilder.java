@@ -247,4 +247,38 @@ public class MyStringBuilder implements Comparable<MyStringBuilder>{
                 (count == other.count ? value[0] - other.value[0] : count - other.count);
 
     }
+
+    public class Memento {
+
+        private final char[] value;
+
+        private final int count;
+
+        public Memento(char[] value, int count) {
+            this.value = value;
+            this.count = count;
+        }
+
+        public char[] getValue() {
+            return value;
+        }
+
+        public int getCount(){
+            return count;
+        }
+    }
+
+    public Memento save(){
+        return new Memento(Arrays.copyOf(value, value.length) , count);
+    }
+
+    public MyStringBuilder restore(Memento memento){
+        value = memento.getValue();
+        count = memento.getCount();
+
+        return this;
+    }
+
+
+
 }

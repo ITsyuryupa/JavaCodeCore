@@ -1,32 +1,22 @@
+import Collection.ArrayFilter;
+import Collection.Filter;
+import Collection.SquareFilter;
 import MyStringBuilder.MyStringBuilder;
 import MyStringBuilder.MementoStorage;
 
 public class Main {
     public static void main(String[] args) {
-        StringBuilder s = new StringBuilder();
 
-        MyStringBuilder sb = new MyStringBuilder();
-        MementoStorage m = new MementoStorage(sb);
+        Integer[] array = {1, 2, 3, 4, 5};
 
-        sb.append("Hello, ");
-        char[] worldArray = {'w', 'o', 'r', 'l', 'd', '!'};
-        sb.append(worldArray);
-        System.out.println(sb);
+        // Применяем фильтр, который преобразует строки в верхний регистр
+        Integer[] result = ArrayFilter.filter(array, new SquareFilter());
 
-
-        m.save();
-
-        sb.delete(1,2);
-        System.out.println(sb);
-
-        sb.replace(2,3,"q");
-        System.out.println(sb);
-
-        sb.replace(2,2,"h");
-        System.out.println(sb);
-        m.undo();
-        System.out.println(sb);
-
+        // Вывод результата
+        for (Object item : result) {
+            System.out.println(item);
+        }
 
     }
 }
+

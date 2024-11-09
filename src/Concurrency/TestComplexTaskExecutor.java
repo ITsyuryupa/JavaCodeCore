@@ -1,18 +1,20 @@
 package Concurrency;
 
+import Concurrency.ComplexTaskExecutor;
+
+
 public class TestComplexTaskExecutor {
 
     public static void main(String[] args) {
-        ComplexTaskExecutor taskExecutor = new ComplexTaskExecutor(5); // Количество задач для выполнения
+        Concurrency.ComplexTaskExecutor taskExecutor = new ComplexTaskExecutor(5); // Количество задач для выполнения
 
         Runnable testRunnable = () -> {
-            System.out.println(Thread.currentThread().getName() + " начал тест.");
+            System.out.println(Thread.currentThread().getName() + " started the test.");
 
-            // Выполнение задач и получение общего результата
-            int totalResult = taskExecutor.executeTasks();
-            System.out.println("Общий результат: " + totalResult);
+            // Выполнение задач
+            taskExecutor.executeTasks();
 
-            System.out.println(Thread.currentThread().getName() + " завершил тест.");
+            System.out.println(Thread.currentThread().getName() + " completed the test.");
         };
 
         Thread thread1 = new Thread(testRunnable, "TestThread-1");
